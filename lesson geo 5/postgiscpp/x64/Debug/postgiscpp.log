@@ -1,0 +1,363 @@
+﻿  functions.cpp
+  gdalparser.cpp
+C:\Program Files\PostgreSQL\14\include\ogr_featurestyle.h(89,41): warning C4251: 'OGRStyleTable::osLastRequestedStyleName': class 'CPLString' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRStyleTable'
+C:\Program Files\PostgreSQL\14\include\cpl_string.h(329): message : vea la declaración de 'CPLString'
+C:\Program Files\PostgreSQL\14\include\cpl_json.h(153,26): warning C4251: 'CPLJSONObject::m_osKey': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CPLJSONObject'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.23.28105\include\xstring(4440): message : vea la declaración de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(129,41): warning C4251: 'OGR_SRSNode::m_listener': class 'std::weak_ptr<OGR_SRSNode::Listener>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGR_SRSNode'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(129): message : vea la declaración de 'std::weak_ptr<OGR_SRSNode::Listener>'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251: 'OGRSpatialReference::d': class 'std::unique_ptr<OGRSpatialReference::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRSpatialReference'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251:             _Ty=OGRSpatialReference::Private
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message : vea la declaración de 'std::unique_ptr<OGRSpatialReference::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message :             _Ty=OGRSpatialReference::Private
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251: 'OGRCoordinateTransformationOptions::d': class 'std::unique_ptr<OGRCoordinateTransformationOptions::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'OGRCoordinateTransformationOptions'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251:             _Ty=OGRCoordinateTransformationOptions::Private
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message : vea la declaración de 'std::unique_ptr<OGRCoordinateTransformationOptions::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message :             _Ty=OGRCoordinateTransformationOptions::Private
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251: 'OGRCurve::ConstIterator::m_poPrivate': class 'std::unique_ptr<OGRCurve::ConstIterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRCurve::ConstIterator'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251:             _Ty=OGRCurve::ConstIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message : vea la declaración de 'std::unique_ptr<OGRCurve::ConstIterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message :             _Ty=OGRCurve::ConstIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251: 'OGRSimpleCurve::Iterator::m_poPrivate': class 'std::unique_ptr<OGRSimpleCurve::Iterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRSimpleCurve::Iterator'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251:             _Ty=OGRSimpleCurve::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message : vea la declaración de 'std::unique_ptr<OGRSimpleCurve::Iterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message :             _Ty=OGRSimpleCurve::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251: 'OGRSimpleCurve::ConstIterator::m_poPrivate': class 'std::unique_ptr<OGRSimpleCurve::ConstIterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRSimpleCurve::ConstIterator'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251:             _Ty=OGRSimpleCurve::ConstIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message : vea la declaración de 'std::unique_ptr<OGRSimpleCurve::ConstIterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message :             _Ty=OGRSimpleCurve::ConstIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251: 'OGRGeometryFactory::TransformWithOptionsCache::d': class 'std::unique_ptr<OGRGeometryFactory::TransformWithOptionsCache::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRGeometryFactory::TransformWithOptionsCache'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251:             _Ty=OGRGeometryFactory::TransformWithOptionsCache::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message : vea la declaración de 'std::unique_ptr<OGRGeometryFactory::TransformWithOptionsCache::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message :             _Ty=OGRGeometryFactory::TransformWithOptionsCache::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251: 'OGRFeature::FieldValue::m_poPrivate': class 'std::unique_ptr<OGRFeature::FieldValue::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRFeature::FieldValue'
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251:             _Ty=OGRFeature::FieldValue::Private
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message : vea la declaración de 'std::unique_ptr<OGRFeature::FieldValue::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message :             _Ty=OGRFeature::FieldValue::Private
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251: 'OGRFeature::ConstFieldIterator::m_poPrivate': class 'std::unique_ptr<OGRFeature::ConstFieldIterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRFeature::ConstFieldIterator'
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251:             _Ty=OGRFeature::ConstFieldIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message : vea la declaración de 'std::unique_ptr<OGRFeature::ConstFieldIterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message :             _Ty=OGRFeature::ConstFieldIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(137,39): warning C4251: 'GDALMajorObject::sDescription': class 'CPLString' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALMajorObject'
+C:\Program Files\PostgreSQL\14\include\cpl_string.h(329): message : vea la declaración de 'CPLString'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(190,32): warning C4251: 'GDALDefaultOverviews::osOvrFilename': class 'CPLString' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDefaultOverviews'
+C:\Program Files\PostgreSQL\14\include\cpl_string.h(329): message : vea la declaración de 'CPLString'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251: 'GDALDataset::Bands::Iterator::m_poPrivate': class 'std::unique_ptr<GDALDataset::Bands::Iterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDataset::Bands::Iterator'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251:             _Ty=GDALDataset::Bands::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message : vea la declaración de 'std::unique_ptr<GDALDataset::Bands::Iterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message :             _Ty=GDALDataset::Bands::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251: 'GDALDataset::Layers::Iterator::m_poPrivate': class 'std::unique_ptr<GDALDataset::Layers::Iterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDataset::Layers::Iterator'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251:             _Ty=GDALDataset::Layers::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message : vea la declaración de 'std::unique_ptr<GDALDataset::Layers::Iterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message :             _Ty=GDALDataset::Layers::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251: 'GDALDataset::Features::Iterator::m_poPrivate': class 'std::unique_ptr<GDALDataset::Features::Iterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDataset::Features::Iterator'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251:             _Ty=GDALDataset::Features::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message : vea la declaración de 'std::unique_ptr<GDALDataset::Features::Iterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message :             _Ty=GDALDataset::Features::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251: 'GDALColorTable::aoEntries': class 'std::vector<GDALColorEntry,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALColorTable'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251:             _Ty=GDALColorEntry
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message : vea la declaración de 'std::vector<GDALColorEntry,std::allocator<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message :             _Ty=GDALColorEntry
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251: 'GDALDriverManager::oMapNameToDrivers': class 'std::map<CPLString,GDALDriver *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDriverManager'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:             _Kty=CPLString,
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:             _Ty=GDALDriver *
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message : vea la declaración de 'std::map<CPLString,GDALDriver *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :             _Kty=CPLString,
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :             _Ty=GDALDriver *
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251: 'OGRLayer::m_poPrivate': class 'std::unique_ptr<OGRLayer::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRLayer'
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251:             _Ty=OGRLayer::Private
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message : vea la declaración de 'std::unique_ptr<OGRLayer::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message :         with
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message :         [
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message :             _Ty=OGRLayer::Private
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251: 'OGRLayer::FeatureIterator::m_poPrivate': class 'std::unique_ptr<OGRLayer::FeatureIterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRLayer::FeatureIterator'
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251:             _Ty=OGRLayer::FeatureIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251:         ]
+  postgiscpp.cpp
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message : vea la declaración de 'std::unique_ptr<OGRLayer::FeatureIterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message :         with
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message :         [
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message :             _Ty=OGRLayer::FeatureIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_featurestyle.h(89,41): warning C4251: 'OGRStyleTable::osLastRequestedStyleName': class 'CPLString' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRStyleTable'
+C:\Program Files\PostgreSQL\14\include\cpl_string.h(329): message : vea la declaración de 'CPLString'
+C:\Program Files\PostgreSQL\14\include\cpl_json.h(153,26): warning C4251: 'CPLJSONObject::m_osKey': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'CPLJSONObject'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Tools\MSVC\14.23.28105\include\xstring(4440): message : vea la declaración de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(129,41): warning C4251: 'OGR_SRSNode::m_listener': class 'std::weak_ptr<OGR_SRSNode::Listener>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGR_SRSNode'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(129): message : vea la declaración de 'std::weak_ptr<OGR_SRSNode::Listener>'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251: 'OGRSpatialReference::d': class 'std::unique_ptr<OGRSpatialReference::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRSpatialReference'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251:             _Ty=OGRSpatialReference::Private
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159,31): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message : vea la declaración de 'std::unique_ptr<OGRSpatialReference::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message :             _Ty=OGRSpatialReference::Private
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(159): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251: 'OGRCoordinateTransformationOptions::d': class 'std::unique_ptr<OGRCoordinateTransformationOptions::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de struct 'OGRCoordinateTransformationOptions'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251:             _Ty=OGRCoordinateTransformationOptions::Private
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775,31): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message : vea la declaración de 'std::unique_ptr<OGRCoordinateTransformationOptions::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message :             _Ty=OGRCoordinateTransformationOptions::Private
+C:\Program Files\PostgreSQL\14\include\ogr_spatialref.h(775): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251: 'OGRCurve::ConstIterator::m_poPrivate': class 'std::unique_ptr<OGRCurve::ConstIterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRCurve::ConstIterator'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251:             _Ty=OGRCurve::ConstIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message : vea la declaración de 'std::unique_ptr<OGRCurve::ConstIterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message :             _Ty=OGRCurve::ConstIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(948): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251: 'OGRSimpleCurve::Iterator::m_poPrivate': class 'std::unique_ptr<OGRSimpleCurve::Iterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRSimpleCurve::Iterator'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251:             _Ty=OGRSimpleCurve::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message : vea la declaración de 'std::unique_ptr<OGRSimpleCurve::Iterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message :             _Ty=OGRSimpleCurve::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1067): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251: 'OGRSimpleCurve::ConstIterator::m_poPrivate': class 'std::unique_ptr<OGRSimpleCurve::ConstIterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRSimpleCurve::ConstIterator'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251:             _Ty=OGRSimpleCurve::ConstIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message : vea la declaración de 'std::unique_ptr<OGRSimpleCurve::ConstIterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message :             _Ty=OGRSimpleCurve::ConstIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(1084): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251: 'OGRGeometryFactory::TransformWithOptionsCache::d': class 'std::unique_ptr<OGRGeometryFactory::TransformWithOptionsCache::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRGeometryFactory::TransformWithOptionsCache'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251:             _Ty=OGRGeometryFactory::TransformWithOptionsCache::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883,35): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message : vea la declaración de 'std::unique_ptr<OGRGeometryFactory::TransformWithOptionsCache::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message :             _Ty=OGRGeometryFactory::TransformWithOptionsCache::Private
+C:\Program Files\PostgreSQL\14\include\ogr_geometry.h(2883): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251: 'OGRFeature::FieldValue::m_poPrivate': class 'std::unique_ptr<OGRFeature::FieldValue::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRFeature::FieldValue'
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251:             _Ty=OGRFeature::FieldValue::Private
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385,45): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message : vea la declaración de 'std::unique_ptr<OGRFeature::FieldValue::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message :             _Ty=OGRFeature::FieldValue::Private
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(385): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251: 'OGRFeature::ConstFieldIterator::m_poPrivate': class 'std::unique_ptr<OGRFeature::ConstFieldIterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRFeature::ConstFieldIterator'
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251:             _Ty=OGRFeature::ConstFieldIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528,45): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message : vea la declaración de 'std::unique_ptr<OGRFeature::ConstFieldIterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message :         with
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message :         [
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message :             _Ty=OGRFeature::ConstFieldIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogr_feature.h(528): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(137,39): warning C4251: 'GDALMajorObject::sDescription': class 'CPLString' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALMajorObject'
+C:\Program Files\PostgreSQL\14\include\cpl_string.h(329): message : vea la declaración de 'CPLString'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(190,32): warning C4251: 'GDALDefaultOverviews::osOvrFilename': class 'CPLString' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDefaultOverviews'
+C:\Program Files\PostgreSQL\14\include\cpl_string.h(329): message : vea la declaración de 'CPLString'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251: 'GDALDataset::Bands::Iterator::m_poPrivate': class 'std::unique_ptr<GDALDataset::Bands::Iterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDataset::Bands::Iterator'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251:             _Ty=GDALDataset::Bands::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message : vea la declaración de 'std::unique_ptr<GDALDataset::Bands::Iterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message :             _Ty=GDALDataset::Bands::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(473): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251: 'GDALDataset::Layers::Iterator::m_poPrivate': class 'std::unique_ptr<GDALDataset::Layers::Iterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDataset::Layers::Iterator'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251:             _Ty=GDALDataset::Layers::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message : vea la declaración de 'std::unique_ptr<GDALDataset::Layers::Iterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message :             _Ty=GDALDataset::Layers::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(669): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251: 'GDALDataset::Features::Iterator::m_poPrivate': class 'std::unique_ptr<GDALDataset::Features::Iterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDataset::Features::Iterator'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251:             _Ty=GDALDataset::Features::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727,53): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message : vea la declaración de 'std::unique_ptr<GDALDataset::Features::Iterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message :             _Ty=GDALDataset::Features::Iterator::Private
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(727): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251: 'GDALColorTable::aoEntries': class 'std::vector<GDALColorEntry,std::allocator<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALColorTable'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251:             _Ty=GDALColorEntry
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968,44): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message : vea la declaración de 'std::vector<GDALColorEntry,std::allocator<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message :             _Ty=GDALColorEntry
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(968): message :         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251: 'GDALDriverManager::oMapNameToDrivers': class 'std::map<CPLString,GDALDriver *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'GDALDriverManager'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:             _Kty=CPLString,
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:             _Ty=GDALDriver *
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556,57): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message : vea la declaración de 'std::map<CPLString,GDALDriver *,std::less<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :         with
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :         [
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :             _Kty=CPLString,
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :             _Ty=GDALDriver *
+C:\Program Files\PostgreSQL\14\include\gdal_priv.h(1556): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251: 'OGRLayer::m_poPrivate': class 'std::unique_ptr<OGRLayer::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRLayer'
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251:             _Ty=OGRLayer::Private
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74,41): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message : vea la declaración de 'std::unique_ptr<OGRLayer::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message :         with
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message :         [
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message :             _Ty=OGRLayer::Private
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(74): message :         ]
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251: 'OGRLayer::FeatureIterator::m_poPrivate': class 'std::unique_ptr<OGRLayer::FeatureIterator::Private,std::default_delete<_Ty>>' necesita tener una interfaz DLL para que la utilicen los clientes de class 'OGRLayer::FeatureIterator'
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251:         with
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251:         [
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251:             _Ty=OGRLayer::FeatureIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81,49): warning C4251:         ]
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message : vea la declaración de 'std::unique_ptr<OGRLayer::FeatureIterator::Private,std::default_delete<_Ty>>'
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message :         with
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message :         [
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message :             _Ty=OGRLayer::FeatureIterator::Private
+C:\Program Files\PostgreSQL\14\include\ogrsf_frmts.h(81): message :         ]
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(57,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(62,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(64,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(66,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(76,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(78,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(81,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(83,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(85,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(87,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(89,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(91,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(93,1): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): message : vea la declaración de 'sscanf'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(191,1): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  tripline.cpp
+  trippoint.cpp
+  Generando código...
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): message : vea la declaración de 'fopen'
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\postgiscpp.cpp(132): warning C4715: 'readdb': no todas las rutas de acceso de control devuelven un valor
+     Creando biblioteca D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\x64\Debug\postgiscpp.lib y objeto D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\x64\Debug\postgiscpp.exp
+gdalparser.obj : error LNK2001: símbolo externo "public: virtual class OGRGeometry * __cdecl OGRGeometry::MakeValid(void)const " (?MakeValid@OGRGeometry@@UEBAPEAV1@XZ) sin resolver
+postgiscpp.obj : error LNK2001: símbolo externo "public: virtual class OGRGeometry * __cdecl OGRGeometry::MakeValid(void)const " (?MakeValid@OGRGeometry@@UEBAPEAV1@XZ) sin resolver
+D:\OneDrive - Universidad de Málaga\proyectos\acc\lesson geo 5\postgiscpp\x64\Debug\postgiscpp.exe : fatal error LNK1120: 1 externos sin resolver
