@@ -10,12 +10,20 @@ Para acceder a la base de datos, necesitará los siguientes datos de conexión:
 
 Servidor: obd.ac.uma.es
 Usuarios: ml_aa00, ml_aa01
+<<<<<<< HEAD
 Password: ******** (preguntar)
+=======
+Password: vc0910**
+>>>>>>> 6322a9e3c5698c24018411baeb2325436b3e9ff9
 Database: mlearn
 
 Puede evitar la solicitud de contraseña mediante la creación de un archivo /users/username/.pgpass con tantas líneas como conexiones desee, siendo cada linea de la forma:
 
+<<<<<<< HEAD
 ```obd.ac.uma.es:5432:mlearn:ml_aa02:********```
+=======
+```obd.ac.uma.es:5432:mlearn:ml_aa02:vc0910**```
+>>>>>>> 6322a9e3c5698c24018411baeb2325436b3e9ff9
 
 (en gitignore hay un ejemplo)
 
