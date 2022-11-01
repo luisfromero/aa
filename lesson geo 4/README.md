@@ -1,10 +1,9 @@
 # Lesson 4. PostGIS in depth
 
-En la lección 3 aprendimos los conceptos básicos de una base de datos geográfica, y en particular, de la extensión GIS de postgresql. El objetivo de esta lección es profundizar en el conocimiento de la base de datos. Pero antes de empezar, repasamos algunos aspectos de la base de datos.
+En la lección 3 aprendimos los conceptos básicos de una base de datos geográfica, y en particular, de la extensión GIS de postgresql. El objetivo de esta lección es profundizar en el conocimiento de la base de datos. Pero antes de empezar, repasamos algunos aspectos de las bases de datos.
 
 
-
-## Una base de datos para practicar:
+## MLearn: Una base de datos para practicar:
 
 Para acceder a la base de datos, necesitará los siguientes datos de conexión:
 

@@ -1,3 +1,12 @@
+# Lección 2. QGIS in depth. Python scripts
+
+El objetivo de esta lección es conocer QGIS a fondo, y descubrir cómo la consola de python en QGIS nos permite ampliar enormemente la capacidad de procesamiento de datos geolocalizados mediante la automatización de las herramientas de procesamiento. El [Powerpoint](./Accelerating%20Geospatial%20Analytics%20-%20Lecture%202%20-%20pyQGIS.pptx) apenas se utiliza como apuyo para algunas imágenes.
+
+En la primera parte de la clase, se instalan los plugins necesarios (openlayers, catastro, raster query), y se exploran las posibilidades de la herramienta QGIS. Incidiendo en los detalles de uno de los componentes de la librería GDAL (curvas de nivel).
+
+En la segunda parte se introduce la consola Python, y se automatiza una animación (Covid, Flood, etc.)
+
+
 # Ejercicios de la Lección 2 (y primera parte de la Lección 3)
 
 Se muestran a continuación algunos Scripts de ejemplos de código pyQGIS (Python + QGIS)
