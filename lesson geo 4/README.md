@@ -89,6 +89,17 @@ Antes de continuar con la práctica, consultemos su estructura (\d trip) y visua
 
 select idtripsample,samplelocation,time from tripsample where time > timestamp '2019-12-11';
 
+Observamos que la representación de los datos geográficos se muestra en binario, en formato [WKB](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary):
+
+01 01000000 00000060ABC611C0 00000000A35B4240
+
+01: little endian
+01 00 00 00:  32bit integer 0001 (Point data, en little endian)
+00000060ABC611C0: Coordenada X, flotante de 8 bytes -4.4440131187439
+00000000A35B4240: Coordenada Y, flotante de 8 bytes 36.7159118652344
+
+Para obtener una representación legible de las coordenadas de los puntos, en formato [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry), utilizaremos una conversión:
+
 select idtripsample,st_astext(samplelocation),time from tripsample where time > timestamp '2019-12-11';
 
 <img src='img/psql.jpg' width=400 style="display: block; margin: 0 auto">
@@ -98,17 +109,25 @@ Como se observa, hemos introducido un operador nuevo (st_astext). Este tipo de o
 
 ### Modo 2: Visualización mediante pgadmin
 
-Visualizamos los datos en las tablas mediante la selección de la tabla y la ejecución de una consulta. Como primera opción usaremos la opción view/edit data de una tabla como inputdata.tripsample. En la tabla, localizamos la columna geométrica, y veremos un icono a la izquierda del nombre que permite visualizar la geometría.
+[PGAdmin](https://www.pgadmin.org/download/pgadmin-4-windows/) es una herramienta de administración de bases de datos postgresql, similar a la muy conocida phpmyadmin. Visualizamos los datos en las tablas mediante la selección de la tabla y la ejecución de una consulta. Como primera opción usaremos la opción view/edit data de una tabla como inputdata.tripsample. En la tabla, localizamos la columna geométrica, y veremos un icono a la izquierda del nombre que permite visualizar la geometría.
 
 <img src='img/pgadmin1.jpg' width=400 style="display: block; margin: 0 auto">
 
 Después, ejecutaremos la siguiente consulta mediate la opción _query tool_ de la tabla:
 
 ```sql
-select idtripsample,st_setsrid(samplelocation,4326),time from tripsample where time > timestamp '2019-12-11' and st_distance(st_setsrid(samplelocation,4326),st_GeogFromText('SRID=4326;POINT(-4.476 36.715)')) < 300;
+select idtripsample,st_setsrid(samplelocation,4326),time from tripsample 
+where time > timestamp '2019-12-11' and 
+st_distance(st_setsrid(samplelocation,4326),st_GeogFromText('SRID=4326;POINT(-4.476 36.715)')) < 300;
 ```
 
-Al visualizar la geometría, en este caso, aparece una capa OpenStreetMap de fondo, que es una consecuencia de que la segunda columna tiene establecido un SRC, permitiendo geoproyectarla correctamente. Comprobamos asimismo que los datos visualizados se corresponde con un trayecto a menos de 300 metros del punto _SRID=4326;POINT(-4.476 36.715)_ (situado en el centro del aparcamiento del Complejo Tecnológico)
+En este caso hemos utilizado tres operadores geográficos:
+
+1 [st_setsrid](https://postgis.net/docs/ST_SetSRID.html), que asigna el CRS WGS84 a los datos procedentes del GPS, ya que se almacenaron sin un CRS asignado
+2 [st_geogfromtext](https://postgis.net/docs/ST_GeogFromText.html),  que se ha utilizado para crear un dato geográfico a partir de texto en formato [EWKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry), donde la E de extendido implica que contiene un CRS.
+3 [https://postgis.net/docs/ST_Distance.html), para calcular la distancia geodésica, en metros, entre dos datos geográficos.
+
+Al visualizar la geometría, en este segundo caso, aparece una capa OpenStreetMap de fondo, que es una consecuencia de que la segunda columna tiene establecido un SRC, permitiendo geoproyectarla correctamente. Comprobamos asimismo que los datos visualizados se corresponde con un trayecto que transcurre a menos de 300 metros del punto _SRID=4326;POINT(-4.476 36.715)_ (situado en el centro del aparcamiento del Complejo Tecnológico)
 
 <img src='img/pgadmin2.jpg' width=400 style="display: block; margin: 0 auto">
 
