@@ -53,5 +53,5 @@ La descripción detallada se encuentra en un [markdown específico](densidadmala
 
 Desde fuera de QGIS es posible acceder a la prática totalidad de las funcionalidades de la aplicación utilizando exclusivamente scripts Python. En [este ejercicio](standaloneProject.py) se presenta la forma de hacerlo. 
 
-En general, los principales problemas que nos encontraremos están relacionados con las rutas de los intérpretes, lass librerías, etc. Por ello, es necesario que las variables de entorno se establezcan con los mismos valores de la última instalación de QGIS, que, en el caso de Windows, se almacena en C:\Program Files\QGIS 3.22.1\bin\qgis-bin.env
+En general, los principales problemas que nos encontraremos están relacionados con las rutas de los intérpretes, las librerías, etc. Por ello, es necesario que las variables de entorno se establezcan con los mismos valores de la última instalación de QGIS, que, en el caso de Windows, se almacena en C:\Program Files\QGIS 3.22.1\bin\qgis-bin.env. Si se ejecuta python desde VSCode, las variables se establecen en el archivo .env de la raiz del proyecto (como en [el de este repositorio](../.env))
 

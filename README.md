@@ -1,6 +1,6 @@
 # Accelerating Analytics
 
-## [Lesson 0 Introduction to this course (Prof. R. Asenjo)](./lesson%201%20Rafa//)
+## [Lesson 0 Introduction to this course (Prof. R. Asenjo)](./lesson%201%20Intro/)
 ## [Lesson 1 Accelerating Geospatial Analytics. Introduction to GIS and QGIS](./lesson%20geo%201/)
 ## [Lesson 2 QGIS in depth: Python scripts 1](./lesson%20geo%202/)
 ## [Lesson 3 Python scripts 2. Using GDAL and Grass libraries. PostGIS introduction.](./lesson%20geo%203/)
