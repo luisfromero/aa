@@ -123,7 +123,7 @@ select idtripsample,st_astext(samplelocation),time from tripsample where time > 
 Como se observa, hemos introducido un operador nuevo (st_astext). Este tipo de operadores espaciales (st procede de Spatial-Type) son funciones disponibles al incorporar la extensión GIS. Veremos algunos de ellos en los siguientes ejemplos.
 
 <br/><br/>
-### Modo 2: Visualización mediante pgadmin
+### Modo 2: Visualización mediante PGAdmin
 
 [PGAdmin](https://www.pgadmin.org/download/pgadmin-4-windows/) es una herramienta de administración de bases de datos postgresql, similar a la muy conocida phpmyadmin. Visualizamos los datos en las tablas mediante la selección de la tabla y la ejecución de una consulta. Como primera opción usaremos la opción view/edit data de una tabla como inputdata.tripsample. En la tabla, localizamos la columna geométrica, y veremos un icono a la izquierda del nombre que permite visualizar la geometría.
 
@@ -143,7 +143,7 @@ En este caso hemos utilizado tres operadores geográficos:
 
 2 [st_geogfromtext](https://postgis.net/docs/ST_GeogFromText.html),  que se ha utilizado para crear un dato geográfico a partir de texto en formato [EWKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry), donde la E de extendido implica que contiene un CRS.
 
-3 [st_distance](https://postgis.net/docs/ST_Distance.html), para calcular la distancia geodésica, en metros, entre dos datos geográficos, o entre dos geométricos. En este caso hay un casting implícito en el primer operando.
+3 [st_distance](https://postgis.net/docs/ST_Distance.html), para calcular la distancia geodésica, en metros, entre dos datos geográficos, o entre dos geométricos (ya veremos que no es lo mismo). En este caso hay un casting implícito en el primer operando, de geométrico a geográfico.
 
 Al visualizar la geometría, en este segundo caso, aparece una capa OpenStreetMap de fondo, que es una consecuencia de que la segunda columna tiene establecido un SRC, permitiendo geoproyectarla correctamente. Comprobamos asimismo que los datos visualizados se corresponde con un trayecto que transcurre a menos de 300 metros del punto _SRID=4326;POINT(-4.476 36.715)_ (situado en el centro del aparcamiento del Complejo Tecnológico)
 
@@ -204,12 +204,22 @@ select 'id= ' || idtrip::varchar from trip;
 
 PostGIS proporciona dos formas diferentes para el almacenamiento de datos geoespaciales: 
 
-* Geometry, where it assumes all of your data lives on a Cartesian plane (like a map projection); 
-* Geography, where it assumes that your data is made up of points on the earth's surface, as specified by latitudes and longitudes
+* Geometry, que asume que todos los datos se sitúan en un plano cartesiano (como la proyección de un mapa); 
+* Geography, que asume que todos los datos se sitúan en la superficie terrestre, o más bien un esferoide, especificado por sus latitudes y longitudes.
 
 En realidad, las geometrías ya existían en PostgreSQL sin la extensión GIS.
 
-Veamos algunos operadores básicos de PostGIS, y comparamos las diferencias entre los dos comandos:
+Intente averiguar los resultados de la distancia geométrica entre las playas de El Palo y Mata-Rangi:
+
+```sql
+select st_distance(st_GeogFromText('SRID=4326;POINT(-4.38 36.72)'),st_GeogFromText('SRID=4326;POINT(175.62
+ -36.72)'));
+select st_distance(st_GeomFromText('SRID=4326;POINT(-4.38 36.72)'),st_GeomFromText('SRID=4326;POINT(175.62
+ -36.72)'));
+```
+
+
+Para profundizar aún más, veamos algunos operadores básicos de PostGIS, y comparamos las diferencias entre los dos comandos:
 
 
 ```sql
