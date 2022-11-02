@@ -157,7 +157,7 @@ Al visualizar la geometría, en este segundo caso, aparece una capa OpenStreetMa
 <br/><br/>
 ### Modo 3: Visualización con QGIS
 
-En este caso, nos bastaría con agregar la conexión a la base de datos en el Panel Browser, introduciendo los [parámetros](#una-base-de-datos-para-practicar), y arrastrar la tabla geográfica que nos interese al lienzo, o al panel de capas. La única tabla correctamente georeferenciada (con un SCR de referencias preestablecido es _streetlines_), por lo que será la que usemos en este caso como primer ejemplo.
+En este caso, nos bastaría con agregar la conexión a la base de datos en el Panel Browser, introduciendo los [parámetros](#mlearn-una-base-de-datos-para-practicar), y arrastrar la tabla geográfica que nos interese al lienzo, o al panel de capas. La única tabla correctamente georeferenciada (con un SCR de referencias preestablecido es _streetlines_), por lo que será la que usemos en este caso como primer ejemplo.
 
 
 <img src='img/qgispostgis.jpg' width=400 style="display: block; margin: 0 auto">
@@ -295,7 +295,7 @@ AS
 
 En la práctica que desarrollaremos la siguiente clase, utilizaremos un algoritmo de clustering para detectar trayectorias comunes entre diferentes viajes realizados dentro del campus de Teatinos. 
 
-Utilizaremos un algoritmo [k-means] para hacer el clustering, y en el que utilizaremos un método adaptado para definir la distancia euclídea entre dos trayectos.
+Utilizaremos un algoritmo [k-means](./05-Kmeans.pptx) para hacer el clustering, y en el que utilizaremos un método adaptado para definir la distancia euclídea entre dos trayectos.
 
 Pero antes de ello, será necesario hacer limpieza de los datos. Para ello, utilizaremos los siguientes comandos:
 
@@ -337,15 +337,32 @@ DROP TABLE if exists pract3_full, pract3_samples, pract3_trim;
 --
 --
 -- Create some tables:
-CREATE TABLE candidatos AS SELECT idtrip,distance,ST_Intersection(tripline, ST_MakeEnvelope(-4.5123596191406250,36.7038574218750000 , -4.4552612304687500,36.7367858886718750, 4326)::geography) FROM mytrip WHERE  ST_Intersects(tripline, ST_MakeEnvelope(-4.5123596191406250,36.7038574218750000 , -4.4552612304687500,36.7367858886718750, 4326)::geography);
+CREATE TABLE candidatos AS SELECT 
+idtrip,distance,ST_Intersection(tripline, ST_MakeEnvelope(-4.5123596191406250,36.7038574218750000 , 
+-4.4552612304687500,36.7367858886718750, 4326)::geography) 
+FROM mytrip WHERE  ST_Intersects(tripline, ST_MakeEnvelope(-4.5123596191406250,36.7038574218750000 , 
+-4.4552612304687500,36.7367858886718750, 4326)::geography);
 
 -- Tablas para la practica 3, creadas a partir de la copia mytrip
 
-create table pract3_full as select idtrip,st_setsrid(tripline,4326) as tripline,(select count(*) from inputdata.tripsample where trip_idtrip =idtrip) as numsamples,st_length(st_setsrid(tripline,4326)::geography) as length,distance  from mytrip   where distance > 0 and distance < 30000 and idtrip >= 500 and  st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))) ILIKE 'st_linestring';
+create table pract3_full as 
+select idtrip,st_setsrid(tripline,4326) as tripline,
+(select count(*) from inputdata.tripsample where trip_idtrip =idtrip) as numsamples,
+st_length(st_setsrid(tripline,4326)::geography) as length,distance  
+from mytrip   where distance > 0 and distance < 30000 and idtrip >= 500 and  
+st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))) 
+ILIKE 'st_linestring';
 
-create table pract3_trim as select idtrip,st_setsrid(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))::geometry,4326) as tripline  from mytrip   where distance > 0 and distance < 30000 and idtrip >= 500 and st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))) ILIKE 'st_linestring';
+create table pract3_trim as select idtrip,
+st_setsrid(ST_Intersection(tripline, 
+ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))::geometry,4326) as tripline 
+ from mytrip   where distance > 0 and distance < 30000 and idtrip >= 500 and 
+ st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))) 
+ ILIKE 'st_linestring';
 
-create table pract3_samples as select idtripsample,trip_idtrip,extract(epoch from time) as time,co2perkm,intakeairtemp,litres100km,vehspeed,hdop,gpsbearing,throttle from tripsample where trip_idtrip in (select idtrip from pract3_full) order by trip_idtrip ASC,  time ASC;
+create table pract3_samples as select idtripsample,trip_idtrip,extract(epoch from time) as time,
+co2perkm,intakeairtemp,litres100km,vehspeed,hdop,gpsbearing,throttle from tripsample 
+where trip_idtrip in (select idtrip from pract3_full) order by trip_idtrip ASC,  time ASC;
 
 ```
 
