@@ -1,7 +1,11 @@
+___
+
 # Lesson 4. PostGIS in depth
 
 En la lección 3 aprendimos los conceptos básicos de una base de datos geográfica, y en particular, de la extensión GIS de postgresql. El objetivo de esta lección es profundizar en el conocimiento de la base de datos. Pero antes de empezar, repasamos algunos aspectos de las bases de datos.
 
+<br/><br/>
+___
 
 ## MLearn: Una base de datos para practicar:
 
@@ -30,6 +34,9 @@ Establezca una conexión con la base de datos mediente el front-end interactivo 
 ```psql -h obd.ac.uma.es -U ml_aa00 –d mlearn```
 
 
+
+<br/><br/>
+___
 
 ## Comandos psql
 
@@ -72,6 +79,8 @@ User Related:
 
 
 
+<br/><br/>
+___
 
 ## Las tablas de las bases de datos de las prácticas
 
@@ -81,10 +90,17 @@ En las prácticas, utilizaremos fundamentalmente tres tablas:
 * Viajes de vehículos (trip)
 * Muestras durante un viaje (tripsample)
 
+Pero nada como ver el contenido de las tablas para entender la información que contiene:
+
+<br/><br/>
+___
+
+## Visualización de tablas geográficas
+
 Antes de continuar con la práctica, consultemos su estructura (\d trip) y visualizaremos, mediante cuatro técnicas diferentes, los datos de las tablas:
 
 
-
+<br/><br/>
 ### Modo 1: Visualización elemental, en modo texto (psql)
 
 select idtripsample,samplelocation,time from tripsample where time > timestamp '2019-12-11';
@@ -92,12 +108,12 @@ select idtripsample,samplelocation,time from tripsample where time > timestamp '
 Observamos que la representación de los datos geográficos se muestra en binario, en formato [WKB](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary):
 
 01 01000000 00000060ABC611C0 00000000A35B4240
-
+<pre>
 01: little endian
 01 00 00 00:  32bit integer 0001 (Point data, en little endian)
 00000060ABC611C0: Coordenada X, flotante de 8 bytes -4.4440131187439
 00000000A35B4240: Coordenada Y, flotante de 8 bytes 36.7159118652344
-
+</pre>
 Para obtener una representación legible de las coordenadas de los puntos, en formato [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry), utilizaremos una conversión:
 
 select idtripsample,st_astext(samplelocation),time from tripsample where time > timestamp '2019-12-11';
@@ -106,7 +122,7 @@ select idtripsample,st_astext(samplelocation),time from tripsample where time > 
 
 Como se observa, hemos introducido un operador nuevo (st_astext). Este tipo de operadores espaciales (st procede de Spatial-Type) son funciones disponibles al incorporar la extensión GIS. Veremos algunos de ellos en los siguientes ejemplos.
 
-
+<br/><br/>
 ### Modo 2: Visualización mediante pgadmin
 
 [PGAdmin](https://www.pgadmin.org/download/pgadmin-4-windows/) es una herramienta de administración de bases de datos postgresql, similar a la muy conocida phpmyadmin. Visualizamos los datos en las tablas mediante la selección de la tabla y la ejecución de una consulta. Como primera opción usaremos la opción view/edit data de una tabla como inputdata.tripsample. En la tabla, localizamos la columna geométrica, y veremos un icono a la izquierda del nombre que permite visualizar la geometría.
@@ -124,16 +140,17 @@ st_distance(st_setsrid(samplelocation,4326),st_GeogFromText('SRID=4326;POINT(-4.
 En este caso hemos utilizado tres operadores geográficos:
 
 1 [st_setsrid](https://postgis.net/docs/ST_SetSRID.html), que asigna el CRS WGS84 a los datos procedentes del GPS, ya que se almacenaron sin un CRS asignado
+
 2 [st_geogfromtext](https://postgis.net/docs/ST_GeogFromText.html),  que se ha utilizado para crear un dato geográfico a partir de texto en formato [EWKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry), donde la E de extendido implica que contiene un CRS.
-3 [https://postgis.net/docs/ST_Distance.html), para calcular la distancia geodésica, en metros, entre dos datos geográficos.
+
+3 [st_distance](https://postgis.net/docs/ST_Distance.html), para calcular la distancia geodésica, en metros, entre dos datos geográficos, o entre dos geométricos. En este caso hay un casting implícito en el primer operando.
 
 Al visualizar la geometría, en este segundo caso, aparece una capa OpenStreetMap de fondo, que es una consecuencia de que la segunda columna tiene establecido un SRC, permitiendo geoproyectarla correctamente. Comprobamos asimismo que los datos visualizados se corresponde con un trayecto que transcurre a menos de 300 metros del punto _SRID=4326;POINT(-4.476 36.715)_ (situado en el centro del aparcamiento del Complejo Tecnológico)
 
 <img src='img/pgadmin2.jpg' width=400 style="display: block; margin: 0 auto">
 
 
-
-
+<br/><br/>
 ### Modo 3: Visualización con QGIS
 
 En este caso, nos bastaría con agregar la conexión a la base de datos en el Panel Browser, introduciendo los [parámetros](#una-base-de-datos-para-practicar), y arrastrar la tabla geográfica que nos interese al lienzo, o al panel de capas. La única tabla correctamente georeferenciada (con un SCR de referencias preestablecido es _streetlines_), por lo que será la que usemos en este caso como primer ejemplo.
@@ -143,15 +160,16 @@ En este caso, nos bastaría con agregar la conexión a la base de datos en el Pa
 
 
 
-
-### Modo 3: Visualización con DB Manager de QGIS
+<br/><br/>
+### Modo 4: Visualización con DB Manager de QGIS
 
 Finalmente, instalaremos el plugin de QGIS denominado DB Manager, y veremos que aparece una opción en el menú principal para realizar operaciones sobre una base de datos.
 
 <img src='img/dbmanager.jpg' width=400 style="display: block; margin: 0 auto">
 
 
-
+<br/><br/>
+___
 
 # Consultas básicas con POSTGIS
 
@@ -180,16 +198,16 @@ select idtrip+distance from trip;
 select 'id= ' || idtrip::varchar from trip;
 ```
 
-## Extensión GIS a PostgreSQL
+<br/><br/>
 
-PostGIS gives you a choice of two different ways to store geospatial data: 
+## Extensión GIS a los datos de PostgreSQL
+
+PostGIS proporciona dos formas diferentes para el almacenamiento de datos geoespaciales: 
 
 * Geometry, where it assumes all of your data lives on a Cartesian plane (like a map projection); 
 * Geography, where it assumes that your data is made up of points on the earth's surface, as specified by latitudes and longitudes
 
 En realidad, las geometrías ya existían en PostgreSQL sin la extensión GIS.
-
-
 
 Veamos algunos operadores básicos de PostGIS, y comparamos las diferencias entre los dos comandos:
 
@@ -200,7 +218,7 @@ SELECT idtrip,ST_Length(st_setsrid(tripline,4326)::geography),distance from trip
 ```
 
 
-If the point coordinates are not in a geodetic coordinate system (such as WGS84), then they must be reprojected before casting to a geography.
+In general, if the point coordinates are not in a geodetic coordinate system (such as WGS84), then they must be reprojected before casting to a geography.
 
 ```sql
 SELECT ST_Transform(ST_SetSRID( ST_Point( 3637510, 3014852 ), 2273), 4326)::geography;
