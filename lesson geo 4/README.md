@@ -90,6 +90,10 @@ En las prácticas, utilizaremos fundamentalmente tres tablas:
 * Viajes de vehículos (trip)
 * Muestras durante un viaje (tripsample)
 
+Estas tablas están obtenidas del proyecto USmartDrive, que se detalló en la primera lección, pero que se resume en este video:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/3RjAAMh3QUc/0.jpg)](https://vimeo.com/766531623)
+
 Pero nada como ver el contenido de las tablas para entender la información que contiene:
 
 <br/><br/>
@@ -238,18 +242,195 @@ En PostGIS, el sistema de referencias es obligatorio tanto en datos geométricos
 
 ### Operadores espaciales básicos
 
-El manual de referencia de PostGIS incorpora una [lista extendida](https://postgis.net/docs/reference.html) de operadores espaciales. Algunos de ellos, ya los hemos visto "de refilón". Sin ambargo, existe una infinidad de ellos. 
+El manual de referencia de PostGIS incorpora una [lista extendida](https://postgis.net/docs/reference.html) de operadores espaciales. Algunos de ellos, ya los hemos visto "de refilón". Sin embargo, existe una infinidad de ellos. 
 
 Es importante saber que los operadores tienen diferentes comportamientos, según el tipo de datos del operando. Así, por ejemplo:
 
-* st_length(geometry line), cuando las coordenadas de la geometría están en grados/metros/... , devuelve la longitud de la curva en grados/metros/...
-* st_length(geography line), utiliza datos con un SRC, y devuelve los resultados en metros, considerando el esferoide de referencia.
+* [st_length(geometry line)](https://postgis.net/docs/ST_Length.html), cuando las coordenadas de la geometría están en grados/metros/... , devuelve la longitud de la curva en grados/metros/...
+* [st_length(geography line)](https://postgis.net/docs/ST_Length.html), utiliza datos con un SRC, y devuelve los resultados en metros, considerando el esferoide de referencia.
+
+<br/><br/>
+
 
 ### Operadores espaciales más complejos:
 
-El siguiente comando, st_makeenvelope, genera un objeto geográfico (un polígono rectangular) a partir de dos esquinas opuestas y un SCR. Las coordenadas elegidas, si el sistema es WGS84, coinciden con los extremos de un rectángulo que encierra al Campus de Teatinos. 
+En esta parte final de la lección, preparamos los datos para la práctica de clustering que finalizaremos en la siguiente lección.
+
+La siguiente consulta incluye el comando, st_makeenvelope, que genera un objeto geográfico (un polígono rectangular) a partir de dos esquinas opuestas y un SCR. Las coordenadas elegidas, si el sistema es WGS84, coinciden con los extremos de un rectángulo que encierra al Campus de Teatinos. 
 
 ```sql
-CREATE TABLE candidatos AS SELECT idtrip,distance,ST_Intersection(tripline, ST_MakeEnvelope(-4.51236,36.70386 , -4.45526,36.73679, 4326)::geography) FROM trip WHERE  ST_Intersects(tripline, ST_MakeEnvelope(-4.51236,36.70386 , -4.45526,36.73679, 4326)::geography);
+CREATE TABLE candidatos AS SELECT idtrip,distance,
+ST_Intersection(tripline, ST_MakeEnvelope(-4.51236,36.70386 , -4.45526,36.73679, 4326)::geography) 
+FROM trip WHERE  
+ST_Intersects(tripline, ST_MakeEnvelope(-4.51236,36.70386 , -4.45526,36.73679, 4326)::geography);
 ```
 Descifra el resultado, observando especialmente la sutil diferencia entre un comando que pregunta cierto/falso por una intersección, y otro comando que devuelve la intersección propiamente dicha.
+
+Ejercicio: Analiza los datos y funciones y responde gráficamente a esta pregunta:
+
+¿Qué tipo de trayectos se están seleccionando con esta consulta?
+
+```sql
+CREATE TABLE tripcandidates -- ON COMMIT PRESERVE ROWS
+AS
+	SELECT idtrip
+	FROM trip
+	WHERE
+		ST_Intersects (tripline,
+			ST_Buffer(
+				ST_GeographyFromText('SRID=4326;LineString ( -4.477683801426885 36.716011745802497 , -4.476549093964878 36.715826487441355)')
+			  ,10)
+		)
+		AND ST_Intersects (tripline,
+			ST_Buffer(
+				ST_GeographyFromText('SRID=4326;LineString ( -4.473438297317334 36.714174600387814 , -4.473191286169143 36.713688297189812 )')
+			  ,10)
+		);
+```
+
+<br/><br/>
+---
+
+## Preparación de las tablas para la práctica 3
+
+En la práctica que desarrollaremos la siguiente clase, utilizaremos un algoritmo de clustering para detectar trayectorias comunes entre diferentes viajes realizados dentro del campus de Teatinos. 
+
+Utilizaremos un algoritmo [k-means] para hacer el clustering, y en el que utilizaremos un método adaptado para definir la distancia euclídea entre dos trayectos.
+
+Pero antes de ello, será necesario hacer limpieza de los datos. Para ello, utilizaremos los siguientes comandos:
+
+
+
+```sql
+-- Use CREATE TABLE ... LIKE to create an empty table based on the definition of another table
+CREATE TABLE IF NOT EXISTS ml_aa00.mytrip
+    (
+    LIKE inputdata.trip INCLUDING ALL
+    );
+--
+-- Eliminate DEFAULT constraint, used to provide a default value for idtrip
+ALTER TABLE ml_aa00.mytrip ALTER idtrip DROP DEFAULT;
+--
+-- If two tables with same name... ; public schema is needed for postgis to work
+SET search_path TO ml_aa00,inputdata, public;
+--
+-- Like copies indices, so there's no need to create them again. Next query isn't needed
+-- Create index (CREATE INDEX does not accept schema name and needs search_path)
+CREATE INDEX IF NOT EXISTS mytrip_tripline_idx ON ml_aa00.mytrip USING GIST (tripline);
+--
+--
+INSERT INTO mytrip SELECT * FROM trip;
+
+UPDATE ml_aa00.mytrip
+    SET (tripline) =
+        (
+            SELECT
+                ST_MakeLine(samplelocation ORDER BY ordern) AS tripline
+            FROM inputdata.tripsample
+            WHERE inputdata.tripsample.trip_idtrip = ml_aa00.mytrip.idtrip
+            GROUP BY trip_idtrip
+        )
+;
+--
+-- Drop some tables 
+DROP TABLE if exists pract3_full, pract3_samples, pract3_trim;
+--
+--
+-- Create some tables:
+CREATE TABLE candidatos AS SELECT idtrip,distance,ST_Intersection(tripline, ST_MakeEnvelope(-4.5123596191406250,36.7038574218750000 , -4.4552612304687500,36.7367858886718750, 4326)::geography) FROM mytrip WHERE  ST_Intersects(tripline, ST_MakeEnvelope(-4.5123596191406250,36.7038574218750000 , -4.4552612304687500,36.7367858886718750, 4326)::geography);
+
+-- Tablas para la practica 3, creadas a partir de la copia mytrip
+
+create table pract3_full as select idtrip,st_setsrid(tripline,4326) as tripline,(select count(*) from inputdata.tripsample where trip_idtrip =idtrip) as numsamples,st_length(st_setsrid(tripline,4326)::geography) as length,distance  from mytrip   where distance > 0 and distance < 30000 and idtrip >= 500 and  st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))) ILIKE 'st_linestring';
+
+create table pract3_trim as select idtrip,st_setsrid(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))::geometry,4326) as tripline  from mytrip   where distance > 0 and distance < 30000 and idtrip >= 500 and st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))) ILIKE 'st_linestring';
+
+create table pract3_samples as select idtripsample,trip_idtrip,extract(epoch from time) as time,co2perkm,intakeairtemp,litres100km,vehspeed,hdop,gpsbearing,throttle from tripsample where trip_idtrip in (select idtrip from pract3_full) order by trip_idtrip ASC,  time ASC;
+
+```
+
+
+<br/>
+<br/>
+---
+
+# Anexos
+
+## Procesamiento de datos procedentes de GPS
+
+Una de las claves del éxito del proyecto U-sMArtDrive se fundamentaba en que la difusión del logger OBD fuera suficientemente alta como para que los datos estadísticos fueran abundantes, y para ello, el consumo de la aplicación, y en consecuencia, el número de operaciones enteras y flotantes, especialmente,implicadas debían ser lo más reducida posible.
+
+Para ello, llegamos a la conclusión de que era necesario reducir o aumentar la frecuencia de captura de datos en función de la proximidad o no al campus, y que los cálculos debían ser lo más simple posibles. Entre las optimizaciones que usamos, estaban:
+
+* ### El uso de la distancia Manhattan
+
+<img src='https://qph.cf2.quoracdn.net/main-qimg-e73d01f18d0b4a2f57ff2206a3863c10.webp'>
+
+Eliminar las operaciones trigonométricas no sólo supone un increible ahorro en consumo de baterías. También en el rendimiento de la aplicación, ya que las distancias se pueden medir simplemente sumando y restanto.
+
+* ### Mecanismo simplificado del cálculo de la proximidad
+
+En nuestra aplicación, saber si estamos cerca o lejos del campus es crucial, pues el número de muestras es crtício.
+
+<img src='img/Clipboard01.jpg' width=500>
+
+Nuestro algoritmo apenas realiza 15 o 20 operaciones de suma y resta antes de saber que debe proceder a la captura intensiva de datos. Para ello, utilizamos un algoritmo por fases de proximidad:
+
+
+```java
+        switch(level)
+        {
+            case 0: //Cuando se dese hacer una comprobación completa (inicialmente, por ejemplo)
+                insideTeatinos=estoydentro(position);
+                if(insideTeatinos)
+                    level=5;
+                else
+                    bbox_level_check();
+                break;
+            case 1: //Estoy en el nivel 1 (a más de 11km, aprox.
+                if(level1_prox_check())bbox_level_check();
+                break;
+            case 2: //Estoy algo más cerca. A 1km del bbox. Sigo con frecuencia baja
+                bbox_level_check();
+                break;
+            case 3: //Estoy muy cerca del bbox (300m). Ya trabajo con frecuencia alta
+                bbox_level_check();
+                break;
+            case 4:  //Estoy dentro del bbox, pero puede que fuera de teatinos
+                if(estoydentro(position))level=5;
+                else bbox_level_check();
+                break;
+            case 5:
+                if(!estoydentro(position))bbox_level_check();
+                else
+                {
+                    hotspot_check();
+                }
+                break;
+```
+
+* ### Reconversión de los datos double a enteros, sin coste de conversión
+
+
+```java
+        long llat=Double.doubleToLongBits(position.latitude);
+        currentstate[0]=(int)(1048576+ ((llat&0x000FFFFF00000000L)>>32));
+        //Latitud multiplicada * 32768 y truncada a entero (~1203000)
+        //Un grado son 111000m -> Error ~3.387m
+
+        long llng=Double.doubleToLongBits(position.longitude);
+        currentstate[1]=(int)(131072+ ((llng&0x000FFFF800000000L)>>35)); //131072 es el bit implícito
+        //Longitud multiplicada * 32768 y truncada a entero (~146800)
+        //Un grado son 89350m -> Error ~2.726m
+```
+
+## Ejemplo de uso de postgis en Matlab
+
+El siguiente [archivo](./get_trips_from_path3.m) muestra un ejemplo, con Matlab.
+
+
+## Ejemplo de uso de postgis en Python
+
+El siguiente [notebook de jupyter](./pypostgis/basicspostgis.ipynb) muestra un ejemplo de acceso a los datos con Python.
+
+
