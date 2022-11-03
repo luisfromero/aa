@@ -10,6 +10,7 @@
 Hints:
 
 * Enlace al [campus virtual](https://mop.cv.uma.es/course/view.php?id=16289)
-* There is a lessons [calendar](https://casium.uma.es/calendar?aa)
+* Participantes ([CV](https://mop.cv.uma.es/user/index.php?id=16289))
+* There is a lesson [calendar](http://casium.uma.es/calendar?aa)
 * Evaluation tips are found [here](./evaluation.md)
 * Passwords, grades and large files has been stored at the [ignore directory](ignore)
