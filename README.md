@@ -1,4 +1,4 @@
-# Accelerating Analytics
+# Accelerating Analytics (for geospatial data)
 
 ## [Lesson 0 Introduction to this course (Prof. R. Asenjo)](./lesson%201%20Intro/)
 ## [Lesson 1 Accelerating Geospatial Analytics. Introduction to GIS and QGIS](./lesson%20geo%201/)
