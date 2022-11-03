@@ -1,5 +1,12 @@
 import sys, os
 
+# Si es necesaria la instalación de paquetes
+if False:
+    os.system('pip install geopandas')
+    os.system('pip install contextily')
+    os.system('pip install dipy')
+
+
 #set up psycopg2 environment
 import psycopg2
 import geopandas as gpd
@@ -21,12 +28,12 @@ from pyproj import Proj, transform
 #------------------------------------------------------------------------------------
 import dipy 
 from dipy.segment.metric import Metric
-from dipy.segment.metric import ResampleFeature
+#from dipy.segment.metric import ResampleFeature
 from dipy.segment.clustering import QuickBundles
 #------------------------------------------------------------------------------------
 class GPSDistance(Metric):
     def __init__(self):
-        super().__init__(feature=dipy.segment.metric.ResampleFeature(nb_points=256))
+        super().__init__(feature=dipy.segment.featurespeed.ResampleFeature(nb_points=256))
         #self._geod = Geod(ellps='WGS84')
 
     def are_compatible(self, shape_1, shape_2):
@@ -42,7 +49,7 @@ class GPSDistance(Metric):
 #------------------------------------------------------------------------------------
 def add_basemap(ax, zoom, url='http://tile.stamen.com/terrain/{z}/{x}/{y}.png'):
     xmin, xmax, ymin, ymax = ax.axis()
-    basemap, extent = ctx.bounds2img(xmin, ymin, xmax, ymax, zoom=zoom, url=url)
+    basemap, extent = ctx.bounds2img(xmin, ymin, xmax, ymax, zoom=zoom, source=url)
     ax.imshow(basemap, extent=extent, interpolation='bilinear')
     # restore original x/y limits
     ax.axis((xmin, xmax, ymin, ymax))
@@ -62,9 +69,9 @@ ax2 = plt.subplot(2,1,2, sharex = ax1, sharey = ax1)
 #----------------------------------------------
 # Step 1: Stablish connection between python and postgresql and get some tracks (result)
 #----------------------------------------------
-conn = psycopg2.connect("dbname = 'umaobd' user = 'obd_readpriv' host = 'atomic3.dmz.ac.uma.es' password = 'vc0910$$'")
+conn = psycopg2.connect("dbname = 'mlearn' user = 'ml_aa00' host = 'obd.ac.uma.es' password = 'vc0910$$'")
 #cur = conn.cursor()
-sql="select * from candidatos2"
+sql="select * from candidatos"
 #cur.execute(sql)
 #result = cur.fetchone()
 #cur.close()

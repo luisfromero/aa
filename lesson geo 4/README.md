@@ -278,12 +278,12 @@ AS
 	WHERE
 		ST_Intersects (tripline,
 			ST_Buffer(
-				ST_GeographyFromText('SRID=4326;LineString ( -4.477683801426885 36.716011745802497 , -4.476549093964878 36.715826487441355)')
+				ST_GeographyFromText('SRID=4326;LineString ( -4.4750 36.7155 , -4.474 36.7155)')
 			  ,10)
 		)
 		AND ST_Intersects (tripline,
 			ST_Buffer(
-				ST_GeographyFromText('SRID=4326;LineString ( -4.473438297317334 36.714174600387814 , -4.473191286169143 36.713688297189812 )')
+				ST_GeographyFromText('SRID=4326;LineString ( -4.4740 36.7140 , -4.4730 36.7140)')
 			  ,10)
 		);
 ```
@@ -297,8 +297,24 @@ En la práctica que desarrollaremos la siguiente clase, utilizaremos un algoritm
 
 Utilizaremos un algoritmo [k-means](./05-Kmeans.pptx) para hacer el clustering, y en el que utilizaremos un método adaptado para definir la distancia euclídea entre dos trayectos.
 
-Pero antes de ello, será necesario hacer limpieza de los datos. Para ello, utilizaremos los siguientes comandos:
+Se recuerda gráficamente cómo funciona el algoritmo k-means:
+<br/>
+<br/>
+<img src='..\lesson geo 5\k-means\AnimacionK-means.gif' width=400>
 
+<br/>
+
+
+Vamos a crear 5 tablas:
+
+* _mytrip_ es una copia de la tabla trip en nuestro esquema
+* _candidatos_ es una tabla para experimentar con [Quickbundles](https://dipy.org/documentation/1.0.0./examples_built/segment_quickbundles/): una herramienta para Python que implementa una técnica de clustering para trayectos procedentes de una tractografía. Candidatos utiliza todos los trayectos que pasen por el rectángulo que envuelve el campus.
+* _pract3\_full_ es una versión mejorada de la tabla _mytrip_, con un filtro de número de muestras y de longitud.
+* _pract3\_trim_ es un recorte de los trayectos de la tabla anterior
+* _pract3\_samples_ son las muestras que corresponden a los trayectos en _pract3\_full_
+
+
+Para ello, utilizaremos los siguientes comandos:
 
 
 ```sql
@@ -333,13 +349,13 @@ UPDATE ml_aa00.mytrip
 ;
 --
 -- Drop some tables 
-DROP TABLE if exists pract3_full, pract3_samples, pract3_trim;
+DROP TABLE if exists candidatos,pract3_full, pract3_samples, pract3_trim;
 --
 --
 -- Create some tables:
 CREATE TABLE candidatos AS SELECT 
 idtrip,distance,ST_Intersection(tripline, ST_MakeEnvelope(-4.5123596191406250,36.7038574218750000 , 
--4.4552612304687500,36.7367858886718750, 4326)::geography) 
+-4.4552612304687500,36.7367858886718750, 4326)::geography) as trayectos
 FROM mytrip WHERE  ST_Intersects(tripline, ST_MakeEnvelope(-4.5123596191406250,36.7038574218750000 , 
 -4.4552612304687500,36.7367858886718750, 4326)::geography);
 
