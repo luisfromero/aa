@@ -122,7 +122,7 @@ ___
 
 <br/><br/>
 ___
-## BigQuery GIS
+### BigQuery GIS
 
 BigQuery es el almacén de datos empresariales de Google. De gran escalabilidad y sin servidor, está diseñado para mejorar la productividad de los analistas de datos con un precio relativamente bajo. Como no hay que gestionar ninguna infraestructura, puedes centrarte en analizar los datos mediante un lenguaje SQL y sin necesidad de administrador la bases de datos.
 
@@ -136,7 +136,19 @@ El siguiente [Notebook Jupyter](./bigquery/bigquery.ipynb) muestra gráficamente
 
 <br/><br/>
 ___
-## HBase
+### HBase
+
+<br/><br/>
+___
+# A GIS MonteCarlo simulation 
+
+En [este anexo](./montecarlo/README.md) se desarrolla un ejemplo de una simulación MonteCarlo para la estimación  de la radiación solar en los tejados de una ciudad. La simulación utiliza datos de LiDAR, obtenidos a partir de una capa raster de un servicio del [Centro Nacional de Información Geográfica](http://centrodedescargas.cnig.es/CentroDescargas/catalogo.do?Serie=MDT02#), para calcular la radiación en la superficie de los techos de edificios en la ciudad de Málaga.
+<br/>
+<p style="text-align: center;">
+[<img src='img/radiacion.jpg' width=600>]
+</p>
+
+
 
 
 
