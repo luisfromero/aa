@@ -112,4 +112,33 @@ Haz clic [aquí](./postgiscpp/) para ver el proyecto c++.
 ___
 # Lesson 5.2 Miscellany
 
+Python: Geopandas y GDAL
+
+La documentación está en un [notebook](./gdal/acceso_gdal_geopandas.ipynb)
+
+<br/><br/>
+___
+## Otras bases de datos geográficas
+
+<br/><br/>
+___
+## BigQuery GIS
+
+BigQuery es el almacén de datos empresariales de Google. De gran escalabilidad y sin servidor, está diseñado para mejorar la productividad de los analistas de datos con un precio relativamente bajo. Como no hay que gestionar ninguna infraestructura, puedes centrarte en analizar los datos mediante un lenguaje SQL y sin necesidad de administrador la bases de datos.
+
+Además, BigQuery tiene implementada algunas características GIS, aunque con ciertas limitaciones. Puedes encontrar más información en la sección [BigQuery GIS](https://cloud.google.com/bigquery/docs/geospatial-intro?hl=es-419) de la documentación oficial.
+
+La visualización de datos se realiza a través de visores para GeoJSON, por ejemplo, con la [extensión para geojson de Jupyter](https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/geojson-extension)
+
+El siguiente [Notebook Jupyter](./bigquery/bigquery.ipynb) muestra gráficamente cómo se realiza una consulta en BigQuery. Sin embargo, para evitar problemas de la instalación de Python establecida para trabajar con QGIS (fijada en el archivo [.env](../.env) del proyecto github), usaremos la instalación del sistema, que en mi caso se inicia con "d:\proyectos\python310\python.exe -m notebook --debug
+
+
+
+<br/><br/>
+___
+## HBase
+
+
+
+
 
