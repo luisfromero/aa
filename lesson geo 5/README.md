@@ -112,15 +112,20 @@ Haz clic [aquí](./postgiscpp/) para ver el proyecto c++.
 ___
 # Lesson 5.2 Miscellany
 
-Python: Geopandas y GDAL
+## Dataframes de Geopandas y GDAL
 
-La documentación está en un [notebook](./gdal/acceso_gdal_geopandas.ipynb)
+En este anexo se muestra un ejemplo de uso de los dataframes de geopandas (que no son más que tablas de datos en Python, similares a _pandas_, pero georeferenciadas).
+
+El ejemplo también utiliza la librería Shapely de Python, enfocada a la manipulación y el análisis de datos vectoriales. Tanto Shapely en Python, sf en R, y PostGIS utilizan la misma librería en backend: [GEOS](https://libgeos.org/).
+
+Toda la documentación de este anexo está en el [notebook](./gdal/acceso_gdal_geopandas.ipynb) de Jupyter donde se desarrolla un ejemplo. 
+
+Adicionalmente se muestra el interfaz que permite conectar directamente Python con la librería GDAL.
+
 
 <br/><br/>
 ___
 ## Otras bases de datos geográficas
-
-<br/><br/>
 ___
 ### BigQuery GIS
 
@@ -133,22 +138,69 @@ La visualización de datos se realiza a través de visores para GeoJSON, por eje
 El siguiente [Notebook Jupyter](./bigquery/bigquery.ipynb) muestra gráficamente cómo se realiza una consulta en BigQuery. Sin embargo, para evitar problemas de la instalación de Python establecida para trabajar con QGIS (fijada en el archivo [.env](../.env) del proyecto github), usaremos la instalación del sistema, que en mi caso se inicia con "d:\proyectos\python310\python.exe -m notebook --debug
 
 
+Finalmente, puede consultar los tutoriales de Google [Comienza a usar las estadísticas geoespaciales](https://cloud.google.com/bigquery/docs/geospatial-get-started?hl=es-419) y [Trabaja con datos geoespaciales](https://cloud.google.com/bigquery/docs/geospatial-data?hl=es-419), en los que descubrirá la similitud con PostGIS, ya que la diferencia principal radica en el rendimiento con grandes datos (y en el coste, por supuesto).
 
 <br/><br/>
 ___
-### HBase
+### Análisis geoespacial con bases de datos NoSQL: HBase y Cassandra
+
+Además de BigQuery, hay otros ejemplos de bases de datos orientado al bigdata: HBase y Cassandra, ambas desarrolladas por Apache. HBase, por ejemplo, se autodefine como una "base de datos NoSQL de código abierto para Hadoop". Aunque estas bases de datos, por su simplicidad, no tienen componentes geosespaciales específicas, se apoyan en Geomesa: 
+
+GeoMesa es una base de datos espaciotemporal, distribuida y open-source construida sobre una serie de sistemas distribuidos de almacenamiento de datos en la nube, incluyendo HBase, Cassandra y Bigtable. Aprovechando una estrategia de indexación altamente paralelizada, GeoMesa tienen como objetivo proporcionar a los sistemas distribuidos de almacenamiento consultas espaciales y manipulación de datos. En cierto sentido, no es incorrecto decir que Geomesa es a HBase o Cassandra lo que PostGIS a Postgresql.
+
+Una gran parte de la potencia de Geomesa se obtiene gracias a su eficiente manipulación de los datos mediante un indexado de los mismos usando índices Z, que no es más que una forma de referenciar datos geométricos o geográficos mediante un sistema alternativo a los conocidos X e Y o latitud y longitud:
+
+<p style='text-align:center;'><img src='img/morton.jpg' width=400></p>
+
+El orden Z (desarrollado por Morton, de IBM, en Canadá en 1966) puede extenderse a otras dimensiones, y utiliza un valor binario para indicar la posición en las dos (o más) dimensiones:
+
+<p style='text-align:center;'><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Zcurve45bits.png/300px-Zcurve45bits.png' width=200></p>
+
+Una adaptación del índice Z a datos geoespaciales es conocido como Geohash. Un geohash es un sistema de geocódigos del dominio público creado por Gustavo Niemeyer en el 2008 en donde se codifica la ubicación geográfica en un texto corto de letras y números. El fundamento es muy parecido al índice Z, aunque utiliza símbolos alfanuméricos. 
+
+<p style='text-align:center;'><img src='https://petrov.free.bg/academic/publication/geohash-eas-modified-geohash-geocoding-system-equal-area-spaces/fig_2.jpg' width=400></p>
+
+Es fácil observar en esta tabla cómo el índice geohash se relaciona con la escala y la localidad espacial de los datos a los que indexa:
+
+* Sur de europa, norte de África: e
+* España: ey
+* Málaga: eysb
+* El Palo: eysbuu
+* Pedregalejo: eysbuh
+* Aeropuerto JFK: dr5x0z
+
+<p style='text-align:center;'></p>
+
+En la siguiente animación se muestra dinámicamente el indexado en Geomesa mediante el índice Z:
+
+<img src='https://www.geomesa.org/documentation/2.0.2/_images/progression-800x450.gif'>
+
+
 
 <br/><br/>
 ___
-# A GIS MonteCarlo simulation 
+## Una simulación MonteCarlo con datos geoespaciales 
 
 En [este anexo](./montecarlo/README.md) se desarrolla un ejemplo de una simulación MonteCarlo para la estimación  de la radiación solar en los tejados de una ciudad. La simulación utiliza datos de LiDAR, obtenidos a partir de una capa raster de un servicio del [Centro Nacional de Información Geográfica](http://centrodedescargas.cnig.es/CentroDescargas/catalogo.do?Serie=MDT02#), para calcular la radiación en la superficie de los techos de edificios en la ciudad de Málaga.
+
+
+<br/>
+<p style="text-align: center;">
+[<img src='img/lidar.jpg' width=300>]
+</p>
+
+A partir de los resultados, puede calcularse la posición y orientación más adecuada para los paneles solares:
+
 <br/>
 <p style="text-align: center;">
 [<img src='img/radiacion.jpg' width=600>]
 </p>
 
 
+
+
+
+Nota 2022 (para el profesor): El código Python falla por las dimensiones del modelo ASC descargado del IGN (hoja 1053). La depuración se hace en VSCode, pero en una ventana diferente del workspace, ya que el entorno .env está configurado para pyqgis. 
 
 
 

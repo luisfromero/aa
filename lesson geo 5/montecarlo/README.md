@@ -12,7 +12,7 @@ Con esta información se puede obtener información concreta para instalar panel
 
 <br/>
 <p style="text-align: center;">
-[<img src='img/radiacion.jpg' width=600>]
+[<img src='../img/radiacion.jpg' width=600>]
 </p>
 
 
