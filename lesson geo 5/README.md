@@ -118,7 +118,7 @@ En este anexo se muestra un ejemplo de uso de los dataframes de geopandas (que n
 
 El ejemplo también utiliza la librería Shapely de Python, enfocada a la manipulación y el análisis de datos vectoriales. Tanto Shapely en Python, sf en R, y PostGIS utilizan la misma librería en backend: [GEOS](https://libgeos.org/).
 
-Toda la documentación de este anexo está en el [notebook](./gdal/acceso_gdal_geopandas.ipynb) de Jupyter donde se desarrolla un ejemplo. 
+Toda la documentación de este anexo está en el [notebook](./geopandas_gdal/acceso_gdal_geopandas.ipynb) de Jupyter donde se desarrolla un ejemplo. 
 
 Adicionalmente se muestra el interfaz que permite conectar directamente Python con la librería GDAL.
 
@@ -144,7 +144,25 @@ Finalmente, puede consultar los tutoriales de Google [Comienza a usar las estad�
 ___
 ### Análisis geoespacial con bases de datos NoSQL: HBase y Cassandra
 
-Además de BigQuery, hay otros ejemplos de bases de datos orientado al bigdata: HBase y Cassandra, ambas desarrolladas por Apache. HBase, por ejemplo, se autodefine como una "base de datos NoSQL de código abierto para Hadoop". Aunque estas bases de datos, por su simplicidad, no tienen componentes geosespaciales específicas, se apoyan en Geomesa: 
+Además de BigQuery, hay otros ejemplos de bases de datos orientado al bigdata: HBase y Cassandra, ambas desarrolladas por Apache. HBase, por ejemplo, se autodefine como una "base de datos NoSQL de código abierto para Hadoop". En concreto, las principales características de HBase son:
+
+* Open source Apache project
+* Non-relational, distributed DB
+* Runs on top of HDFS
+* Written in Java
+* NoSQL (Not Only SQL) Database
+* Consistent and Partition tolerant
+* Runs on commodity hardware
+* Large Database ( terabytes to petabytes).
+* Low latency random read / write to HDFS.
+* Many companies are using HBase
+* Facebook, Twitter, Adobe, Mozilla, Yahoo
+
+Sin embargo, a pesar de sus ventajas...
+
+<p style='text-align:center;'><img src='img/trends.jpg' width=400></p>
+
+Aunque estas bases de datos (HBase, Cassandra, ...), por su simplicidad, no tienen componentes geosespaciales específicas, se apoyan en Geomesa: 
 
 GeoMesa es una base de datos espaciotemporal, distribuida y open-source construida sobre una serie de sistemas distribuidos de almacenamiento de datos en la nube, incluyendo HBase, Cassandra y Bigtable. Aprovechando una estrategia de indexación altamente paralelizada, GeoMesa tienen como objetivo proporcionar a los sistemas distribuidos de almacenamiento consultas espaciales y manipulación de datos. En cierto sentido, no es incorrecto decir que Geomesa es a HBase o Cassandra lo que PostGIS a Postgresql.
 
