@@ -160,6 +160,7 @@ Una adaptación del índice Z a datos geoespaciales es conocido como Geohash. Un
 
 <p style='text-align:center;'><img src='https://petrov.free.bg/academic/publication/geohash-eas-modified-geohash-geocoding-system-equal-area-spaces/fig_2.jpg' width=400></p>
 
+
 Es fácil observar en esta tabla cómo el índice geohash se relaciona con la escala y la localidad espacial de los datos a los que indexa:
 
 * Sur de europa, norte de África: e
@@ -169,11 +170,11 @@ Es fácil observar en esta tabla cómo el índice geohash se relaciona con la es
 * Pedregalejo: eysbuh
 * Aeropuerto JFK: dr5x0z
 
-<p style='text-align:center;'></p>
+<p style='text-align:center;'><img src='img/geohash.jpg' width=400></p>
 
 En la siguiente animación se muestra dinámicamente el indexado en Geomesa mediante el índice Z:
 
-<img src='https://www.geomesa.org/documentation/2.0.2/_images/progression-800x450.gif'>
+<p style='text-align:center;'><img src='https://www.geomesa.org/documentation/2.0.2/_images/progression-800x450.gif' width=400></p>
 
 
 
