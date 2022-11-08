@@ -361,25 +361,17 @@ FROM mytrip WHERE  ST_Intersects(tripline, ST_MakeEnvelope(-4.5123596191406250,3
 
 -- Tablas para la practica 3, creadas a partir de la copia mytrip
 
-create table pract3_full as 
-select idtrip,st_setsrid(tripline,4326) as tripline,
-(select count(*) from inputdata.tripsample where trip_idtrip =idtrip) as numsamples,
-st_length(st_setsrid(tripline,4326)::geography) as length,distance  
-from mytrip   where distance > 0 and distance < 30000 and idtrip >= 500 and  
-st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))) 
-ILIKE 'st_linestring';
+drop table pract3_full;
+create table pract3_full as select idtrip,st_setsrid(tripline,4326) as tripline,(select count(*) from tripsample where trip_idtrip =idtrip) as numsamples,st_length(st_setsrid(tripline,4326)::geography) as length,distance  from mytrip   where distance > 0 and distance < 30000 and idtrip >= 200 and  st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))) ILIKE 'st_linestring';
 
-create table pract3_trim as select idtrip,
-st_setsrid(ST_Intersection(tripline, 
-ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))::geometry,4326) as tripline 
- from mytrip   where distance > 0 and distance < 30000 and idtrip >= 500 and 
- st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))) 
- ILIKE 'st_linestring';
+drop table pract3_trim;
+create table pract3_trim as select idtrip,st_setsrid(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785))::geometry,4326) as tripline, distance  from mytrip   where distance > 0 and distance < 30000 and idtrip >= 200 and st_geometrytype(ST_Intersection(tripline, ST_MakeEnvelope(-4.512359,36.703857, -4.455261,36.736785)))  ILIKE 'st_linestring';
+delete  from pract3_trim  where st_npoints(tripline) = 0;
+alter table pract3_trim add column length double precision, add column numsamples integer;
+update pract3_trim set length =st_length(st_setsrid(tripline,4326)::geography), numsamples= st_npoints(tripline);
 
-create table pract3_samples as select idtripsample,trip_idtrip,extract(epoch from time) as time,
-co2perkm,intakeairtemp,litres100km,vehspeed,hdop,gpsbearing,throttle from tripsample 
-where trip_idtrip in (select idtrip from pract3_full) order by trip_idtrip ASC,  time ASC;
-
+drop table pract3_samples;
+create table pract3_samples as select idtripsample,trip_idtrip,extract(epoch from time) as time,co2perkm,intakeairtemp,litres100km,vehspeed,hdop,gpsbearing,throttle from tripsample where trip_idtrip in (select idtrip from pract3_trim) order by trip_idtrip ASC,  time ASC;
 ```
 
 

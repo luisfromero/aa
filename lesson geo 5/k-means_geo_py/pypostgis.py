@@ -1,3 +1,8 @@
+# Versión creada antes del Notebook. Puede servir para medir rendimiento fuera del entorno
+# jupyter, o en servidores. Última modificación justo antes de crear el notebook
+# 9-11-2022 a las 7:30
+
+
 import sys, os
 
 # Si es necesaria la instalación de paquetes
@@ -71,18 +76,18 @@ ax2 = plt.subplot(2,1,2, sharex = ax1, sharey = ax1)
 #----------------------------------------------
 conn = psycopg2.connect("dbname = 'mlearn' user = 'ml_aa00' host = 'obd.ac.uma.es' password = 'vc0910$$'")
 #cur = conn.cursor()
-sql="select * from candidatos"
+sql="select * from pract3_trim where not st_isempty(tripline);"
 #cur.execute(sql)
 #result = cur.fetchone()
 #cur.close()
-result = gpd.GeoDataFrame.from_postgis(sql, conn, geom_col='trayectos', crs  ={'init': 'epsg:4326'} )#.to_crs(epsg=3857)
+result = gpd.GeoDataFrame.from_postgis(sql, conn, geom_col='tripline', crs  ={'init': 'epsg:4326'} )#.to_crs(epsg=3857)
 conn.close()
 
 
 #----------------------------------------------
 # Step 2: Store tracks in a custon array, before using QuickBundles
 #----------------------------------------------
-result=result['trayectos']
+result=result['tripline']
 result3857=result.to_crs(epsg=3857)
 result3857.plot(ax=ax1)
 add_basemap(ax1, zoom=15)

@@ -3,26 +3,30 @@ ___
 
 ## Introducción
 
-En el proyecto aplicaremos una modificación del algoritmo [k-means](../lesson%20geo%204/05-Kmeans.pptx) adaptada a los trayectos realizados por los vehículos que acceden al campus de Teatinos.
+El clustering es un conjunto de procesos o algoritmos que tiene como objetivo agrupar individuos para crear subconjuntos de datos. Cada uno de ellos recibe el nombre de clúster. Un clúster es, por tanto, una colección de objetos o datos que guardan similitudes entre ellos. Sin embargo, también tienen las suficientes características diferenciadoras respecto al resto de los elementos como para justificar la creación de un segmento independiente. El clustering, evidentemente, puede aplicarse a datos georeferenciados siendo lo más común, en este caso, que el criterio de similitud tenga una relación directa o indirecta con la posición geográfica. 
 
-La idea es localizar vehículos que hacen el mismo trayecto para acceder al campus o para salir de él.
-A continuación, se ve el resultado, que se ha obtenido utilizando una versión del algoritmo (Quickbundles), implementado en Python, a partir de una colección de trayectos de la que se han obtenido cinco clusters.
+Una implementación, en Python y en C++, se encuentra autodescrita en el [notebook](./k-means_noGeo/k-means.ipynb).
+
+La siguiente animación muestra gráficamente el mecanismo iterativo de k-means:
+
+<br/><br/>
+<p style='text-align:center;'><img src='img/AnimacionK-means.gif' width=400></p>
+
+En esta lección, como ya anticipamos, vamos a implementar un algoritmo de clustering aplicado a los datos procedentes de l proyecto [UmaSmartDrive](https://eventos.uma.es/29987/detail/u-smart-drive-i-plan-propio-de-smart-campus.html). En el proyecto aplicaremos una modificación del algoritmo _k-means_ (ver [PowerPoint](../lesson%20geo%204/05-Kmeans.pptx)) adaptada a los trayectos realizados por los vehículos que acceden al campus de Teatinos, para identificar trayectos que tengan un trazado similar _dentro del campus_.
+
+La idea en concreto es es localizar vehículos y conductores que hacen el mismo trayecto para acceder al campus o para salir de él con el objeto de identificar sus patrones de conducción mediante el análisis de series temporales.
+
+En la siguiente imagen vemos un resultado, que se ha obtenido utilizando una versión del algoritmo k-means(Quickbundles), implementado en Python, a partir de una colección de trayectos de la que se han obtenido cinco clusters.
 
 <img src='img/clusteredtrips.png'>
 
 
-
 El código, como se comentó en la clase anterior:
 
-
-
-1 Consulta los trayectos en una base de datos
-
-2 Consulta en la BD los datos de los puntos registrados en cada trayecto
-
-3 Asocia los correspondientes puntos a los trayectos mediante punteros
-
-4 Clasifica los trayectos en:
+1. Consulta los trayectos en una base de datos
+2. Consulta en la BD los datos de los puntos registrados en cada trayecto
+3. Asocia los correspondientes puntos a los trayectos mediante punteros
+4. Clasifica los trayectos en:
 
     * Entra en el campus
     * Salen del campus
@@ -34,8 +38,32 @@ Si los trayectos tienen suficiente calidad (un mínimo nº de puntos), los redef
 Los 256 puntos son equidistantes en espacio (no en tiempo)
 Los parámetros del nuevo punto se obtienen mediante media ponderada de los puntos ya existentes, en tiempo.
 
-Además, en la nueva versión que os adjunto, he añadido dos interesantes operaciones:
+Existen dos versiones del código: la primera, más simpe, e ineficiente, en Python, así como una versión mucho más compleja en C++, que es la que se debe completar en la práctica.
 
+<br/>
+
+---
+## Versión Python
+
+La versión en Python utiliza el algoritmo Quickbundles, que se ha implementado en la librería de imágenes médicas DipY para Python para resolver un problema diferente: la simplificación de tractos en una tractografía:
+
+La Tractografia es una técnica de resonancia magnética avanzada, con la cual se evidencian los tractos neuronales, es decir las redes  e interconexiones nerviosas del cerebro (sustancia blanca) entre los hemisferios cerebrales, cerebelo, tronco raquídeo y sus conexiones con la médula espinal. Se lleva a cabo mediante resonancia magnética.
+
+En un [famoso artículo](https://doi.org/10.3389/fnins.2012.00175) se describe el algoritmo Quickbundles, que no es más que una aplicación concreta del algoritmo k-means adaptada a trayectos, en lugar de puntos. La hemos utilizado en nuestro proyecto como modelo.
+
+<img src='img/tracto1.jpg' height=250>
+<img src='img/quickbundles.png' height=250>
+
+El método es relativamente fácil de reproducir y adaptar a nuestro problema. Puede encontrar el [código](./k-means_geo_py/pypostgis.py), y su descripción en un [notebook](./k-means_geo_py/k-means_obd.ipynb) en los enlaces.
+
+<br/>
+
+---
+## Versión C++
+
+La versión en C++ mejora significativamente el rendimiento del algoritmo, no solo por el simple hecho de no utilizar un lenguaje interpretado, sino también porque es suceptible de ser paralelizado. Además, hay partes del código vectorizables y susceptibles de alcanzar un buen rendimiento en GPUs.
+
+Entre las operaciones vectorizables están:
 
 *Cálculo de la distancia entres dos trayectos*:  
 Media aritmética de los distancia entre los correspondientes 256 puntos de cada uno de ello
@@ -47,25 +75,131 @@ En la siguiente imagen se muestra el trayecto centroide (C) de 5 trayectos (0 a 
 
 <img src='img/centroide.jpg'>
 
-En la siguiente imagen se muestra el trayecto centroide (C) de 5 trayectos (0 a 4):
-
-
-
-
-
-
-
-
 
 Para este mismo ejemplo, se muestran algunas "distancias" entre trayectos:
 
+* Distancia entre 1 y 4 es 719 metros
+* Distancia entre 1 y 2 es 1328 metros (aunque sean parecidos, el sentido de circulación es opuesto)
+* Distancia entre 1 y C es 437 metros
+* Distancia entre 0 y 3 es 125 metros
+* Distancia entre 0 y C es 1190 metros
 
+## Clases en el código c++
 
-Distancia entre 1 y 4 es 719 metros
-Distancia entre 1 y 2 es 1328 metros (aunque sean parecidos, el sentido de circulación es opuesto)
-Distancia entre 1 y C es 437 metros
-Distancia entre 0 y 3 es 125 metros
-Distancia entre 0 y C es 1190 metros
+Se muestran a continuación algunas de las clases, estructuras y headers usados por el código:
+
+### samples (muestras)
+
+Es la información del OBD capturada en un determinado punto:
+
+```c
+struct sample
+{
+	int idtrip;
+	double time;
+	double co2perkm;
+	double intakeairtemp;
+	double litres100km;
+	double vehspeed;
+	double hdop;  //horizontal dilution of precision 
+	double gpsbearing;
+	double throttle;
+};
+```
+
+### Clase trippoint
+
+Es, junto a tripline, una de las dos clases críticas:
+
+```c
+
+class trippoint
+{
+public:
+	//Basic information
+	sample *sample; //From database
+	int numorder;
+	double latitude;
+	double longitude;
+	bool hasdata = false;   //Sample data found
+
+	//Advanced information (after processig)
+	bool gps_ok = true;      //Valid GPS measure
+	double gpsspeed;		 //Computed GPS speed, considering GPS data
+	double time_weight = 0;  //proximity to prior (1: very close to i-1)
+	double space_weight = 0; // (0: very close to i+1)
+	double newlat;           //Corrected GPS data (if no ok)
+	double newlon;
+
+	//Constructors
+	trippoint(double lat, double lng);
+	trippoint(trippoint *s, trippoint *d, double w); //From interpolation
+	trippoint(trippoint *s);   //Copy
+	~trippoint();
+};
+
+	trippoint::trippoint(double x, double y)
+	{
+		latitude = y;
+		longitude = x;
+	};
+	trippoint::trippoint(trippoint *s, trippoint *d, double w)
+	{
+		newlat=latitude = s->newlat + w*(d->newlat - s->newlat);
+		newlon=longitude = s->newlon + w*(d->newlon - s->newlon);
+		//ToDo Interpolate more parameters ?
+	};
+	trippoint::trippoint(trippoint *s)
+	{
+		newlat=latitude = s->newlat;
+		newlon=longitude = s->newlon;
+	};
+	trippoint::~trippoint()
+	{
+
+	}
+```
+
+### Clase tripline
+
+Básicamente es un conjunto de objetos trippoint, aunque tiene implementado numerosos métodos:
+
+```c
+class tripline
+{
+
+public:
+	int id;
+	trippoint **points;
+	double distance1;
+	double distance2;
+	int npoints;
+
+	bool outgoing = false;
+	bool ingoing = false;
+	bool invalid = false;
+	int first, last; //First and last ok points
+	double newdistance;
+	bool verbose = true;
+
+	tripline();
+	~tripline();
+	void fill(int npoints);
+	bool insideCampus(int pointindex);
+	void classify();
+	void interpolation(int source, int destination);
+	void computeGPSspeed();
+	void filterStep1();
+	void filterStep2();
+	void maketrack256(tripline * newtrack);
+};
+
+double distance(tripline *a, tripline *b);
+double distance(trippoint b, trippoint a);
+double distance(double latb, double lata, double lonb, double lona);
+
+```
+
 
 
 ¿Y qué tengo que hacer?
@@ -76,15 +210,14 @@ Se adjunta el mismo proyecto para dos entornos (ver enlace al final), y se recom
 
 
 
-Visual Studio 2019 (Windows)
-VSCode, (preparado para usar el compilador y depurador de Visual Studio)
-Para compilar con las librerías GDAL y PostgreSQL, se debe instalar QGIS (preferible 3.16), ya que se utilizan los directorios:
+Visual Studio 2022 (Windows)
+Para compilar con las librerías GDAL y PostgreSQL, se debe instalar QGIS (preferible 3.28), ya que se utilizan los directorios:
 
 
 
-c:\Program Files\QGIS 3.16\include (para los header)
-c:\Program Files\QGIS 3.16\lib (librerías)
-c:\Program Files\QGIS 3.16\bin (Dlls)
+c:\Program Files\QGIS 3.28\include (para los header)
+c:\Program Files\QGIS 3.28\lib (librerías)
+c:\Program Files\QGIS 3.28\bin (Dlls)
 
 
 ...aunque se puede adaptar a otras versiones inferiores o posteriores fácilmente.
@@ -93,7 +226,7 @@ c:\Program Files\QGIS 3.16\bin (Dlls)
 
 Para ejecutar fuera de las plataformas, se necesita añadir el directorio bin de QGIS al PATH, o copiar todas las dlls. En Windows:
 
-set Path=c:\Program Files\QGIS 3.16\bin;%Path%
+set Path=c:\Program Files\QGIS 3.28\bin;%Path%
 
 
 
