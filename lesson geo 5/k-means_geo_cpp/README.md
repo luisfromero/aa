@@ -1,0 +1,1 @@
+## Esta carpeta es un snapshot de la carpeta en proyectos cpp
